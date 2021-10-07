@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+.App {
+  font-family: sans-serif;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+header {
+  background-color: #fafafa;
+  height: 60px;
+}
+header .nav-item {
+  padding: 0 15px;
+  border-right: 2px solid #eee;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+header .nav-item.active {
+  background: #000;
+  color: #fff;
+}
+
+.about,
+.contact {
+  padding: 100px;
+  text-align: center;
+}
+
+.post-content-view,
+.blog {
+  padding: 40px;
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.post-listing {
+  background-color: #fafafa;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 15px;
+}
