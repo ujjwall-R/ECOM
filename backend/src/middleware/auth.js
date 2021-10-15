@@ -3,8 +3,10 @@ const Seller = require("../models/seller");
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.header("Authorization").replace("Bearer", "");
+    const token = req.header("Authorization").replace("Bearer ", "");
     const decoded = jwt.verify(token, "thisislife");
+    console.log(decoded);
+    console.log("Current token:", token);
     const seller = await Seller.findOne({
       _id: decoded._id,
       "tokens.token": token,
@@ -12,10 +14,12 @@ const auth = async (req, res, next) => {
     if (!seller) {
       throw new Error();
     }
+    req.token = token;
     req.seller = seller;
     next();
     console.log(token);
-  } catch (error) {
+  } catch (e) {
+    console.log(e);
     res.status(401).send({ error: "Please authenticate!" });
   }
 };
