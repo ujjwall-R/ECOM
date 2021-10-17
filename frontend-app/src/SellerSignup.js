@@ -1,9 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function SellerSignup() {
   const [inputs, setInputs] = useState({});
+  const history = useHistory();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -13,12 +15,18 @@ export default function SellerSignup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs);
-    axios({
-      method: "post",
-      url: "http://localhost:5000/sellers",
-      data: inputs,
-    });
+    axios.post("http://localhost:5000/sellers", inputs).then(
+      (res) => {
+        history.push({
+          pathname: "/me",
+          state: res.data,
+        });
+        console.log(res.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   };
 
   return (

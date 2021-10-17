@@ -6,6 +6,7 @@ import Contact from "./Contact";
 import Post from "./Post";
 import SellerLogin from "./SellerLogin";
 import SellerSignup from "./SellerSignup";
+import Me from "./Me";
 
 export default function Body() {
   return (
@@ -16,7 +17,7 @@ export default function Body() {
       <Route path="/post/:slug" component={Post} />{" "}
       <Route path="/SellerLogin" component={SellerLogin} />{" "}
       <Route path="/SellerSignup" component={SellerSignup} />{" "}
-      {/* what's :slug? You'll learn it */}
+      <Route path="/me" component={Me} /> {/* what's :slug? You'll learn it */}
     </Switch>
   );
 }
