@@ -1,9 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function SellerLogin() {
   const [inputs, setInputs] = useState({});
+  const history = useHistory();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -16,7 +18,11 @@ export default function SellerLogin() {
     console.log(inputs);
     axios.post("http://localhost:5000/sellers/login", inputs).then(
       (res) => {
-        console.log(res);
+        history.push({
+          pathname: "/me",
+          state: res.data,
+        });
+        console.log(res.data);
       },
       (error) => {
         console.log(error);
