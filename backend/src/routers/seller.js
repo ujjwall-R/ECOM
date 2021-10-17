@@ -22,7 +22,6 @@ router.post("/sellers/logout", auth, async (req, res) => {
       return token.token !== req.token;
     });
     await req.seller.save();
-
     res.send();
   } catch (error) {
     res.status(500).send();
